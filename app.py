@@ -9,8 +9,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
 # Instantiate fastAPI with appropriate descriptors
-create_app():
-    # initalizes our application
+
 app = FastAPI(
     title="Kickstarter Success Guide",
     description="Interactive tool to check for the success of a Kickstarter",
@@ -38,7 +37,6 @@ def about(request: Request):
 # Predictive model
 app.mount(
     "/model.kickstarterlib",
-    StaticFiles(directory="/ML",
+    StaticFiles(directory="/ML"),
     name="model.kickstarterlib"
     )
- 
