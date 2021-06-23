@@ -31,7 +31,7 @@ def home(request: Request):
 # Route for the about page
 @app.get("/about")
 def about(request: Request):
-    return templates.TemplateResponse("about.html", {"request: request"})
+    return templates.TemplateResponse("about.html", {"request": request})
 
 
 # Predictive model
