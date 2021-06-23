@@ -132,15 +132,18 @@ dmypy.json
 # Created by https://www.gitignore.io/api/visualstudiocode
 # Edit at https://www.gitignore.io/?templates=visualstudiocode
 
-### VisualStudioCode ###
+# VisusalStudioCode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
-**/.history
-
-# End of https://www.gitignore.io/api/visualstudiocode
+.history
+.ionide
