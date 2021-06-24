@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Kickstarter Success Guide</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+        <!-- Wrapper -->
+			<div id="wrapper">
+
+                <!-- Header -->
+					<header id="header">
+						<a href="/" class="logo"><strong>KICKSTARTER</strong> <span>Success Predictor</span></a>
+						<nav>
+                            <ul class="actions">
+								<li><a href="/prediction" class="button">Prediction</a></li>
+								<li><a href="/about" class="button">About</a></li>
+                                <li></li>
+							</ul>
+                            
+						</nav>
+					</header>
+                
+                <!-- Main -->
+					<div id="main" class="alt">
+                        <section id="one">
+                            <div class="inner">
+
+                                <div class="row gtr-200">
+                                    <div class="col-6 col-12-medium"> 
+                                        <form action="/prediction" method="POST">                                                                
+                                            <div class="row gtr-uniform">
+                                                <div class="col-12">
+                                                    <label for="message">type blurb</label>
+                                                    <input type="text" id="message" value="message">
+                                                   <div>
+                                                </div>
+                                                <div class="col-6 col-12-xsmall">
+                                                    <label for="message">Number of backers</label>
+                                                    <div class="slidecontainer">
+                                                        <input type="range" min="1" max="50,000" value="1" class="slider" name="Backers" id="backers">
+                                                        <p>Backers: <span id="display1"></span></p>
+                                                      </div>
+                                                </div>
+                                                <div class="col-6 col-12-xsmall">
+                                                    <label for="message">Monetary Goal</label>
+                                                    <div class="slidecontainer">
+                                                        <input type="range" min="1" max="500,000" value="100" class="slider" name="Goal" id="goal">
+                                                        <p>Goal: <span id="display2"></span></p>
+                                                      </div>
+                                                <div>
+                                                <div class="col-12">
+                                                    <ul class="actions">
+                                                        <li><input type="submit" value="Probable Outcome of Success" class="primary" /></li>
+                                                    </ul>
+                                                </div>
+                                            </div> 
+
+                                        </form>
+                                    </div>
+                                    <div class="col-6 col-12-medium">
+                                        <h3>THE LIKELIHOOD OF YOUR KICKSTARTER SUCCESS</h3>
+                                        <h2>{{ prediction }}</h2>
+                                        <h4>{{ blurb }}</h4>
+                                        <h4>{{ backers }}</h4>
+                                        <h4>{{ goal }}</h4>
+                                    </div>
+                                </div>
+     
+                            </div>  
+                        </section>     
+                    </div>       
+                <!-- Footer -->
+                    <footer id="footer">
+                        <div class="inner">
+                            <ul class="icons">
+                                <li><a href="https://github.com/Lambda-DS-build-week-DS26-DS27-Kick-5/Kickstarter-Success-Predictor" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                            </ul>
+                            <ul class="copyright">
+                                <li>&copy; Ft-Kickstarter-5 June 2021</li><li>Developed by:  Ryan Fikejs, Joel Hoover, Sal Hossain, Nicole</li>
+                            </ul>
+                        </div>
+                    </footer>     
+            </div>
+        <!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script src="assets/js/slider.js"></script>
+
+    </body>
