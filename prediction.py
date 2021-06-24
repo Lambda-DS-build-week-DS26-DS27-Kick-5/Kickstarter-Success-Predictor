@@ -11,23 +11,26 @@ import joblib
 import pandas as pd
 import numpy as np
 
-## TODO
-# Import routing and HTML support
+# Import dependances for the router and html
+from fastapi import APIRouter, Request, Form
+from fastapi.templating import Jinja2Templates
 
 
-## TODO
+
 # Instantiate the router
+router = APIRouter()
 
 
-## TODO
-# Instantiate templates
+# Instantiate the templates
+templates = Jinja2Templates(directory="../templates")
+
 
 
 ## NOTE - please be sure to check specific file path matches 
 # Load the model and data pipelines
 model = load_model("modeling_files/model.sav")
-text_pipeline = joblib.load("modeling_files/text_pipeline.pkl")
-quant_pipeline = joblib.load("modeling_files/quant_pipeline.pkl")
+text_pipeline = joblib.load("../modeling_files/text_pipeline.pkl")
+quant_pipeline = joblib.load("../modeling_files/quant_pipeline.pkl")
 
 
 ## NOTE - the parameters for this may change tonight due to changes in the model 
@@ -97,3 +100,46 @@ def predict(blurb, backers, goal):
         # for insight on this part if you get stuck:
         # https://github.com/Lambdata-Build-Week/DS-airbnb/blob/main/app/ml/ml.py
 # Route the inputs of from the HTML form into the predictive model
+@router.post('/prediction')
+def echo(
+    request: Request,
+    blurb: str=Form(...),
+    backers: int=Form(...),
+    goal: int=Form(...)
+):
+    """[summary]
+
+    Gets the input data from predict.html (wrt) dtypes
+    and passes them into the predict function.
+    Parameters are the request as well as values for
+    features necessary for the prediction, collested
+    from the HTML form.  Returns an HTML template supplied
+    through Jinja which displays the prediction of possible
+    success or failure of the kickstarter.
+    """
+
+
+    # Make the prediction
+    prediction = predict(
+    blurb,
+    backers,
+    goal
+    )
+    
+    return templates.TemplateResponse('prediction.html'
+                                      {"request:" request, 
+                                       "prediction": prediction,
+                                       "blurb": f'Blurb': {blurb},
+                                        "backers":  f"Number of backers": {backers},
+                                        "goal" : f"Monetary goal":  {goal}
+                                        } )
+    
+    
+    
+# Route for display of prediction page
+@router.get('/prediction')
+def home(request: Request):
+    return templates.TemplateResponse('prediction.html', {"request": request})
+
+    
+    
