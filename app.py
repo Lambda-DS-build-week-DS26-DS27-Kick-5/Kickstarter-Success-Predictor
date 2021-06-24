@@ -33,11 +33,11 @@ def home(request: Request):
 def about(request: Request):
     return templates.TemplateResponse("about.html", {"request": request})
 
-
+## TODO - this mount needs revision!
 # Predictive model
 app.mount(
     "/model.kickstarterlib",
-    StaticFiles(directory="../ML"),
+    StaticFiles(directory="../modeling_files"),
     name="model.kickstarterlib"
     )
 
