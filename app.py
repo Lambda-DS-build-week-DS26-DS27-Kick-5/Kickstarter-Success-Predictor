@@ -18,7 +18,7 @@ app = FastAPI(
 )
 
 # Instantiate templates path
-templates = Jinja2Templates(directory="/templates")
+templates = Jinja2Templates(directory="../templates")
 
 
 # Route for home page
@@ -33,10 +33,14 @@ def home(request: Request):
 def about(request: Request):
     return templates.TemplateResponse("about.html", {"request": request})
 
-
+## TODO - this mount needs revision!
 # Predictive model
 app.mount(
     "/model.kickstarterlib",
-    StaticFiles(directory="/ML"),
+    StaticFiles(directory="../modeling_files"),
     name="model.kickstarterlib"
     )
+
+
+if __name__ == "__main__":
+    uvicorn.run(app)
