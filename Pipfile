@@ -9,7 +9,6 @@ uvicorn = "*"
 jinja2 = "*"
 tensorflow = "*"
 scikit-learn "*"
-pipfile = "*"
 
 [dev-packages]
 
