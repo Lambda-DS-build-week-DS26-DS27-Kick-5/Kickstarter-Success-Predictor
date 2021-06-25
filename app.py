@@ -18,7 +18,7 @@ app = FastAPI(
 )
 
 # Instantiate templates path
-templates = Jinja2Templates(directory="../templates")
+templates = Jinja2Templates(directory="./templates")
 
 
 # Route for home page
@@ -33,12 +33,19 @@ def home(request: Request):
 def about(request: Request):
     return templates.TemplateResponse("about.html", {"request": request})
 
+## I wonder if having this route and the route in prediction.py interfere with each other somehow?
+# Route to the prediction page
+@app.get("/prediction")
+def prediction(request: Request):
+    return templates.TemplateResponse("prediction.html", {"request": request})
+
+
 ## TODO - this mount needs revision!
 # Predictive model
 app.mount(
-    "/model.kickstarterlib",
-    StaticFiles(directory="../modeling_files"),
-    name="model.kickstarterlib"
+    "/model.sav",
+    StaticFiles(directory="./modeling_files/"),
+    name="model.sav"
     )
 
 

@@ -7,8 +7,11 @@ name = "pypi"
 fastapi = "*"
 uvicorn = "*"
 jinja2 = "*"
-tensorflow = "*"
-scikit-learn "*"
+tensorflow = "==2.4.0"
+scikit-learn = "*"
+pandas = "*"
+numpy = "*"
+aiofiles = "*"
 
 [dev-packages]
 
