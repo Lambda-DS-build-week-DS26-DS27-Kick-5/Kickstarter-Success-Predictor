@@ -22,15 +22,14 @@ router = APIRouter()
 
 
 # Instantiate the templates
-templates = Jinja2Templates(directory="../templates")
-
+templates = Jinja2Templates(directory="./templates")
 
 
 ## NOTE - please be sure to check specific file path matches 
 # Load the model and data pipelines
-model = load_model("modeling_files/model.sav")
-text_pipeline = joblib.load("../modeling_files/text_pipeline.pkl")
-quant_pipeline = joblib.load("../modeling_files/quant_pipeline.pkl")
+model = load_model("./modeling_files/model.sav")
+text_pipeline = joblib.load("./modeling_files/text_pipeline.pkl")
+quant_pipeline = joblib.load("./modeling_files/quant_pipeline.pkl")
 
 
 ## NOTE - the parameters for this may change tonight due to changes in the model 
@@ -120,26 +119,23 @@ def echo(
 
 
     # Make the prediction
-    prediction = predict(
-    blurb,
-    backers,
-    goal
-    )
+    prediction = predict(blurb,
+                         backers,
+                         goal
+                        )
     
-    return templates.TemplateResponse('prediction.html'
-                                      {"request:" request, 
+    return templates.TemplateResponse('prediction.html',
+                                      {"request": request, 
                                        "prediction": prediction,
-                                       "blurb": f'Blurb': {blurb},
-                                        "backers":  f"Number of backers": {backers},
-                                        "goal" : f"Monetary goal":  {goal}
-                                        } )
+                                       "blurb": {blurb},
+                                       "backers": f"Number of backers: {backers}",
+                                       "goal": f"Monetary goal: {goal}"
+                                      })
     
     
     
 # Route for display of prediction page
 @router.get('/prediction')
-def home(request: Request):
+def display_index(request: Request):  # This method may revert to Home
     return templates.TemplateResponse('prediction.html', {"request": request})
-
-    
-    
+ 
